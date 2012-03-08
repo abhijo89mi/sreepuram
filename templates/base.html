@@ -1,0 +1,140 @@
+{% load webdesign %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="google-site-verification" content="DTdjIUyIfCADTQO4AvtLTSBo7fef7SF6z9eLRlIgTUE" />
+<title>{% block title %} {% endblock %}</title>
+{% block metatag %}  {% endblock %}
+<link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" />
+<link href="{{ MEDIA_URL }}css/jquery.ennui.contentslider.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<!-- Site JavaScript -->
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.ennui.contentslider.js"></script>
+<script type="text/javascript">
+	$(function() {
+	$('#one').ContentSlider({
+	width : '970px',
+	height : '240px',
+	speed : 400,
+	easing : 'easeOutSine'
+	});
+	});
+</script>
+<script src="{{ MEDIA_URL }}js/jquery.chili-2.2.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}js/chili/recipes.js" type="text/javascript"></script>
+{% block head %} {% endblock %}
+</head>
+<body>
+
+<div id="templatemo_wrapper">
+
+    <div id="templatemo_header">
+        <div id="site_title">
+        
+			<h1><a href="#"><img src="{{ MEDIA_URL }}images/logo.png" alt="logo" /><span>{% block tagline %}Sreepuram.org {% endblock %} </span></a></h1>
+            
+        </div> <!-- end of site_title -->
+    </div> <!-- end of header -->
+    
+  	<div id="templatemo_menu">
+		{% block menu %}
+        <ul>
+            <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul> 
+		{% endblock %}
+    </div> <!-- end of templatemo_menu -->
+    
+    <div id="templatemo_banner">
+    
+    			<span class="nav_bg"></span>
+            
+                <div id="one" class="contentslider">
+                    <div class="cs_wrapper">
+                        <div class="cs_slider">
+							{% block banner %}
+							{% for img in slider_image %}
+                            <div class="cs_article">
+                            
+                            	<div class="slider_content_wrapper">
+                            	
+                      				<div class="right">
+										<h2>{{ img.title }}</h2>
+										<p>{{ img.image_description }}</p>
+                                        
+                                        <div class="button"><a href="#">More...</a></div>
+                                    </div>
+                                  <div class="left">
+								   <a href="http://www.softlinkweb.com/page/1"><img src="{{ MEDIA_URL }}{{ img.image }}" alt="{{ img.title }}" /></a>
+                                    </div>
+                                
+                                </div>
+                            </div><!-- End cs_article -->
+							{% endfor %}
+							{% endblock %}
+                        </div><!-- End cs_slider -->
+                    </div><!-- End cs_wrapper -->
+                </div><!-- End contentslider -->
+                <div class="cleaner"></div>
+   
+        </div>
+     <div id="templatemo_main"><span class="main_top"></span> 
+	{% block main %}
+	 <p class="welcome_text">&quot; {% block welcome_text %}{% lorem 10 w random %} {% endblock %} &quot;</p>
+     
+     	<div class="col_w420 float_l">
+			{% block left %}
+                  <h2>Welcome to Blue Sofa</h2>
+                    
+                  <div class="fl_img"><img src="images/bargraph.png" alt="Our services" /></div>
+                  <p><em>{% lorem 20 w random %}</em></p>
+                    
+                  <div class="cleaner"></div>
+					<ul class="templatemo_list">
+                      <li>{% lorem 5 w random %}</li>
+                      <li>{% lorem 5 w random %}</li>
+                      <li>{% lorem 5 w random %}</li>
+                      <li>{% lorem 5 w random %}</li>
+        
+					</ul>
+                    
+                  <div class="button float_r"><a href="services.html">More...</a></div>
+			{% endblock %}
+       </div>
+               <div class="col_w420 float_r">
+				{% block right %}
+					<h2>Latest  News</h2>
+					<div class="image_wrapper fl_img"><img src="images/templatemo_image_01.jpg" alt="Our news" /></div>
+					<p><a href="http://www.softlinkweb.com" target="_parent">softlinkweb.com</a> provides a lot of high quality <a href="http://www.softlinkweb.com/page/1" target="_parent">free css templates</a> for your personal or commercial websites. Credits go to <a href="http://www.photovaco.com/" target="_blank">Free Photos</a> for photos and <a href="http://www.smashingmagazine.com/" target="_blank">Smashing Magazine</a> for icons. <a href="#">More...</a></p>
+                    
+					<div class="button float_r"><a href="news.html">All News</a></div>
+                     
+					<div class="cleaner_h30"></div>
+					<h2>Testimonial</h2>
+                      <blockquote>
+                          <p>{% lorem 15 w random %} <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+                            
+                          <cite>Sanil PS - <span>Senior Designer</span></cite>
+                      </blockquote>
+				{% endblock %}
+              </div>
+                
+              <div class="cleaner"></div>
+	{% endblock %}
+    </div> <!-- end of main -->
+    <div id="templatemo_main_bottom"></div> 
+    
+    <div id="templatemo_footer">
+	{% block footer %}
+   	 Copyright © {{ value|date:"Y" }} <a href="#">Softlinkweb Solution Pvt Ltd</a> | <a href="http://www.softlinkweb.com/aff.php?aff=001" target="_parent">Website Templates</a> by <a href="http://www.softlinkweb.com/aff.php?aff=001" target="_parent">Softlinkweb Solution Pvt Ltd</a>
+	{% endblock %}
+    </div> <!-- end of templatemo_footer -->
+</div> <!-- end of wrapper -->
+
+</body>
+</html>
